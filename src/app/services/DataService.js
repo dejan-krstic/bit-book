@@ -7,7 +7,7 @@ import Comment from '../models/Comment';
 
 const sessionId = sessionStorage.getItem('sessionId');
 
-const requestUrl = 'http://bitbookapi.azurewebsites.net/api';
+const requestUrl = 'https://bitbookapi.azurewebsites.net/api';
 class FetchData {
     async getUsers() {
         try {
