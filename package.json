@@ -1,6 +1,7 @@
 {
   "name": "bit-book",
   "version": "0.1.0",
+  "homepage": "https://dejan-krstic.github.io/bit-book",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
