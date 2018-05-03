@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Form, Button, Tab } from 'semantic-ui-react';
-import { postData, getData } from '../services/DataService'
+import { postData } from '../services/DataService'
 
 class LoginPage extends Component {
     constructor(props) {
@@ -8,7 +8,10 @@ class LoginPage extends Component {
         this.state = {
             userName: '',
             password: '',
-            error: ''
+            error: {
+                login: '',
+                register: ''
+            }
         }
     }
 
@@ -16,9 +19,13 @@ class LoginPage extends Component {
         postData.userRegister(this.state.userName, this.state.password)
             .then(result => {
                 if (result.status === 200) {
-                    this.props.history.push('/login')
+                    this.setState({error: {
+                        register: ''
+                    }})
                 } else {
-                    this.setState({ error: result });
+                    this.setState({ error: {
+                        register: result
+                    }});
                 }
             })
     }
@@ -27,9 +34,14 @@ class LoginPage extends Component {
         postData.userLogin(this.state.userName, this.state.password)
             .then(result => {
                 if (result.status === 200) {
+                    this.setState({error: {
+                        login: ''
+                    }})
                     this.props.onLogin();
                 } else {
-                    this.setState({ error: result });
+                    this.setState({ error: {
+                        login: result
+                    } });
                 }
             })
     }
@@ -59,8 +71,8 @@ class LoginPage extends Component {
                 </Form.Field>
                 <Form.Field>
                     <label>Password</label>
-                    <input placeholder='Password' onChange={this.getPass} />
-                    <small style={{ color: 'red' }}>{this.state.error}</small>
+                    <input placeholder='Password' type='password' onChange={this.getPass} />
+                    <small style={{ color: 'red' }}>{this.state.error.login}</small>
                 </Form.Field>
                 <Button type='submit' onClick={this.onLogin}>Login</Button>
             </Form>
@@ -76,12 +88,23 @@ class LoginPage extends Component {
                 </Form.Field>
                 <Form.Field>
                     <label>Password</label>
-                    <input placeholder='Password' onChange={this.getPass} />
-                    <small style={{ color: 'red' }}>{this.state.error}</small>
+                    <input placeholder='Password' type='password' onChange={this.getPass} />
+                    <small style={{ color: 'red' }}>{this.state.error.register}</small>
                 </Form.Field>
                 <Button type='submit' onClick={this.onRegister}>Register</Button>
             </Form>
         )
+    }
+
+    clearState = () => {
+        this.setState({
+            userName: '',
+            password: '',
+            error: {
+                login: '',
+                register: ''
+            }
+        })
     }
 
     render() {
@@ -90,15 +113,21 @@ class LoginPage extends Component {
             { menuItem: 'Register', render: () => <Tab.Pane>{this.registerRender()}</Tab.Pane> }
         ]
         return (
-            <Grid>
-                <Grid.Row>
-                    <Grid.Column width='eight'>
+            <Grid id='login-page'>
+                <Grid.Row style={{marginTop: '50px'}}>
+                    <Grid.Column width='one'>
                     </Grid.Column>
                     <Grid.Column width='six'>
-                        <Tab panes={panes} defaultActiveIndex={0} />
-
+                        <h2>Bitbook Social Network</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At totam quod eligendi atque quos iusto dolorum accusamus cumque aperiam. Dignissimos recusandae id assumenda sequi quo totam excepturi eveniet dolor, est beatae tempore molestias ex, ipsa quibusdam autem sed ullam animi praesentium aperiam corporis enim. Voluptatibus nostrum, praesentium perspiciatis fugiat cupiditate earum magni ducimus, nobis, quisquam dolorum nesciunt aliquam quae non vitae? Libero necessitatibus alias quisquam ab ea, doloremque fugit nesciunt repellendus at modi voluptas totam deserunt amet porro maiores perspiciatis, quasi facere impedit! Impedit, eaque inventore? Illo, voluptatem ullam consequuntur aliquid reiciendis perspiciatis blanditiis temporibus soluta quo!</p>
                     </Grid.Column>
                     <Grid.Column width='two'>
+                    </Grid.Column>
+                    <Grid.Column width='six'>
+                        <Tab panes={panes} defaultActiveIndex={0} onClick={this.clearState}/>
+
+                    </Grid.Column>
+                    <Grid.Column width='one'>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>

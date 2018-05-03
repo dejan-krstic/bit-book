@@ -29,6 +29,8 @@ class PostDetails extends Component {
             .then(response => {
                 this.fetchComments();
             })
+        this.setState({commentValue:''})
+        
     }
 
     deletePost = (e) => {
@@ -49,6 +51,7 @@ class PostDetails extends Component {
             .then((result) => {
                 this.setState({ commentList: result })
                 this.setState({ postID: this.props.match.params.id })
+   
 
                 if (this.props.match.params.type === "text") {
                     getData.fetchTextPost(this.state.postID).then((result) => {
@@ -71,7 +74,7 @@ class PostDetails extends Component {
     printPost() {
 
         if (this.props.match.params.type === "image") {
-            return <img src={this.state.post.imageUrl} className="ui image" alt="post-pic" />
+            return <img style={{width: 'inherit'}} src={this.state.post.imageUrl} className="ui image" alt="post-pic" />
         } else
             if (this.props.match.params.type === "video") {
                 return <iframe src={this.state.post.videoUrl} class="ui image" title="post-title"></iframe>
@@ -95,26 +98,26 @@ class PostDetails extends Component {
                         <div className="extra content">
                         </div>
                     </div>
-                    <div class="ui comments">
+                    <div className="ui comments">
 
 
-                        <form class="ui reply form">
-                            <div class="field">
-                                <textarea id="commentInput" rows="3" onChange={this.handleChange}> </textarea>
+                        <form className="ui reply form">
+                            <div className="field">
+                                <textarea id="commentInput" rows="3" onChange={this.handleChange} value={this.state.commentValue}> </textarea>
                             </div>
-                            <button class="ui icon primary left labeled button" onClick={this.sendComment}>
-                                <i aria-hidden="true" class="edit icon"></i>Add Comment</button>
+                            <button className="ui icon primary left labeled button" onClick={this.sendComment}>
+                                <i aria-hidden="true" className="edit icon"></i>Add Comment</button>
                         </form>
 
 
                         {this.state.commentList.map((comment) => {
 
-                            return <div className="comment">
+                            return <div className="comment" key={comment.id}>
                                 <a className="avatar">
-                                    <img src="https://semantic-ui.com/images/avatar/large/elliot.jpg" alt="user-img" />
+                                    <img src={comment.authorImage} alt="user-img" />
                                 </a>
                                 <div className="content">
-                                    <div className="author">Joe Henderson</div>
+                                    <div className="author">{comment.authorName}</div>
                                     <div className="metadata">
                                         <div><TimeAgo date={new Date(comment.dateCreated + 'z')} /></div>
                                     </div>
@@ -135,8 +138,8 @@ class PostDetails extends Component {
                                 <i aria-hidden="true" className="edit icon"></i>Add Comment</button> */}
                         {/* next two lines were incoming change and out of the form  */}
                         {(this.state.post.userId == sessionStorage.getItem('userId')) ?
-                        <button class="ui icon primary left labeled button" onClick={this.deletePost}>
-                            <i aria-hidden="true" class="edit icon"></i>Delete Post</button> :
+                        <button className="ui icon primary left labeled button" onClick={this.deletePost}>
+                            <i aria-hidden="true" className="edit icon"></i>Delete Post</button> :
                             <React.Fragment /> }
                         {/* </form> */}
 

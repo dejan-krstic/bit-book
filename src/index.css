@@ -2,11 +2,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  
 }
 #root{
   min-height: 100vh;
   position: relative;
   padding-bottom: 42px;
+  
 }
 #footer {
   position:absolute;
@@ -30,8 +32,14 @@ div.ui.pagination.menu {
   display: block;
   margin: 10px 0
 }
+
 .item.thingy {
   -moz-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.5);
+}
+#login-page {
+  background-image: url(https://www.scalevp.com/sites/default/files/designbig.jpg);
+  background-size: cover;
+  min-height: 90vh;
 }

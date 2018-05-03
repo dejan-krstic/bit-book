@@ -1,5 +1,5 @@
 import React from 'react';
-import { Item, Card } from 'semantic-ui-react'
+import { Item } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 const PeopleItem = (props) => {
@@ -11,7 +11,7 @@ const PeopleItem = (props) => {
             <Item.Content verticalAlign='middle'>
                 <Item.Header>{props.user.name}</Item.Header>
                 <Item.Description>{props.user.aboutShort}</Item.Description>
-                <Item.Meta>Last post: {props.user.lastPostDate}</Item.Meta>
+                <Item.Meta>{`Last post: ${props.user.lastPostDate}`}</Item.Meta>
             </Item.Content>
         </Item>
     )    

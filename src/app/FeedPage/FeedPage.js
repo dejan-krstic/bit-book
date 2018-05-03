@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import FeedList from './FeedList';
-import Loader from '../partials/Loader'
-import { Button, Label, Grid } from 'semantic-ui-react'
-import _ from 'lodash'
-import { postData, getData } from '../services/DataService'
+import { Button, Grid } from 'semantic-ui-react'
+import { postData } from '../services/DataService'
 import ModalText from './ModalText'
 import ModalImage from './ModalImage'
 import ModalVideo from './ModalVideo'
@@ -96,7 +93,7 @@ class FeedPage extends Component {
     }
 
     isValidVideo(input) {
-        return (input.match(/^https:\/\/www\.youtube\.com\/embed\//) != null)
+        return ((input.match(/^https:\/\/www\.youtube\.com\/embed\//) != null)||(input.match(/^https:\/\/www\.youtube\.com\/watch\?v=/) != null))
     }
 
     sendTextPost = () => {

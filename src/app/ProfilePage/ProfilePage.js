@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Icon, Grid, Button, Image, Modal, Form } from 'semantic-ui-react'
+import { Card, Grid, Button, Image } from 'semantic-ui-react'
 import { getData, postData } from '../services/DataService'
 import ModalEdit from './ModalEdit'
 
@@ -93,6 +93,7 @@ class ProfilePage extends Component {
         }
         const data = this.state.user
         data.email = 'user@unFriendly'
+        data.AboutShort = 'bla'
         if (this.userEdit.name) {
             data.name = this.userEdit.name
         }

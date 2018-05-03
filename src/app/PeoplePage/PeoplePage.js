@@ -54,7 +54,7 @@ class PeoplePage extends Component {
     handlePaginationChange = (e, { activePage }) => this.setState({ activePage })
 
     paginationPeople () {
-        return  <Pagination activePage={this.state.activePage} defaultActivePage={1} totalPages={Math.ceil(this.state.search.result.length/6)} onPageChange={this.handlePaginationChange} />
+        return  <Pagination activePage={this.state.activePage} totalPages={Math.ceil(this.state.search.result.length/6)} onPageChange={this.handlePaginationChange} />
     }
       
 

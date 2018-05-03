@@ -61,3 +61,7 @@ a {
 div.ui.card.feed>div.extra.content {
   display:none;
 }
+.text-post-body {
+  padding: 5px 10px;
+  color: black;
+}

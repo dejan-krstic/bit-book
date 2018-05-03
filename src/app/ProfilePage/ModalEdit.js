@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Label, Image, Modal, Form, Input } from 'semantic-ui-react'
+import { Button, Modal, Form } from 'semantic-ui-react'
 
 const ModalEdit = (props) => {
     const { open, size } = props.modal
@@ -14,7 +14,7 @@ const ModalEdit = (props) => {
                     <Form.Field>
                         <label>Edit name:</label>
                         <input id='textInput' type='text' onChange={props.handleNameInput} placeholder='Your name...' maxLength="31" />
-                        {(props.nameLength == 31) ? <small style={{ color: 'red' }} >{`31/30    ${props.errorLength}`}</small> : <small>{`${props.nameLength}/30`}</small>}
+                        {(props.nameLength === 31) ? <small style={{ color: 'red' }} >{`31/30    ${props.errorLength}`}</small> : <small>{`${props.nameLength}/30`}</small>}
                     </Form.Field>
                     <Form.Field>
                         <label>Edit your info:</label>

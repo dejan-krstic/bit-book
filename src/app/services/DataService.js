@@ -1,11 +1,7 @@
-
-import React from 'react';
 import axios from 'axios';
 import { PostVideo, PostText, PostImage } from '../models/TextPost'
 import User from '../models/User'
 import Comment from '../models/Comment';
-
-const sessionId = sessionStorage.getItem('sessionId');
 
 const requestUrl = 'https://bitbookapi.azurewebsites.net/api';
 class FetchData {
@@ -122,11 +118,22 @@ class FetchData {
             })
             .then(result => {
 
-                return result.map(comment => {
-                    return new Comment(comment);
+                return Promise.all(result.map(comment => {
+                    return axios({
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Key': '5256EE4',
+                            'SessionId': sessionStorage.getItem('sessionId')
+                        },
+                        url: `${requestUrl}/users/${comment.authorId}`,
+                        method: 'get',
+                    })
+                        .then(response =>{
+                        return new Comment(comment, response.data.avatarUrl)
+                        })
 
                 })
-
+            )
             })
             .catch(error => {
                 console.log(error);
@@ -194,7 +201,7 @@ export const getData = new FetchData();
 class PostData {
     async postText(data) {
         try {
-            const post = await axios({
+            await axios({
                 headers: {
                     'Content-Type': 'application/json',
                     'Key': '5256EE4',
@@ -270,6 +277,7 @@ class PostData {
                 data: {
                     body: data,
                     postId: id,
+                    authorId: sessionStorage.getItem('userId')
                     // 664
                 }
             });

@@ -1,10 +1,11 @@
 {
   "name": "bit-book",
-  "version": "0.1.0",
   "homepage": "https://dejan-krstic.github.io/bit-book",
+  "version": "0.1.0",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "gh-pages": "^1.1.0",
     "lodash": "^4.17.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -16,8 +17,7 @@
     "react-semantic-ui": "^0.2.0",
     "react-timeago": "^3.4.3",
     "semantic-ui-css": "^2.3.1",
-    "semantic-ui-react": "^0.79.0",
-    "gh-pages": "^1.1.0",
+    "semantic-ui-react": "^0.79.0"
   },
   "scripts": {
     "predeploy": "npm run build",

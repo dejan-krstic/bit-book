@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { getData } from '../services/DataService'
 import _ from 'lodash'
 import FeedVideo from './FeedVideo';
@@ -126,14 +125,14 @@ class FeedList extends Component {
     }
 
     map = (post) => {
-        if (post.type == "video") {
-            return <Link to={`/${post.type}/${post.id}`}><FeedVideo post={post} /></Link>
+        if (post.type === "video") {
+            return <Link to={`/${post.type}/${post.id}`}><FeedVideo key={post.id} post={post} /></Link>
         } else
-            if (post.type == "text") {
-                return <FeedText post={post} />
+            if (post.type === "text") {
+                return <FeedText key={post.id} post={post} />
             } else {
                 console.log(this.state.topMargin);
-                return <FeedImage post={post} onLoad={this.onImgLoad} src={this.props.src} dimensions={this.state.dimensions} topMargin={this.state.topMargin} />
+                return <FeedImage key={post.id} post={post} onLoad={this.onImgLoad} src={this.props.src} dimensions={this.state.dimensions} topMargin={this.state.topMargin} />
             }
     }
 
@@ -161,10 +160,10 @@ class FeedList extends Component {
                     <div className="row">
                         {/* {console.log(this.state.postList)} */}
                         <div className='text-align-center'>
-                            <button class={`ui teal button ${this.state.show.images}`} role="button" onClick={this.showImages}>Show Images</button>
-                            <button class={`ui red button ${this.state.show.texts}`} role="button" onClick={this.showTexts}>Show Texts</button>
-                            <button class={`ui yellow button ${this.state.show.videos}`} role="button" onClick={this.showVideos}>Show Videos</button>
-                            <button class={`ui orange button ${this.state.show.all}`} role="button" onClick={this.showAll}>Show All</button>
+                            <button className={`ui teal button ${this.state.show.images}`} onClick={this.showImages}>Show Images</button>
+                            <button className={`ui red button ${this.state.show.texts}`} onClick={this.showTexts}>Show Texts</button>
+                            <button className={`ui yellow button ${this.state.show.videos}`} onClick={this.showVideos}>Show Videos</button>
+                            <button className={`ui orange button ${this.state.show.all}`} onClick={this.showAll}>Show All</button>
 
                         </div>
                         {_.isEmpty(this.state.filteredList) ?
