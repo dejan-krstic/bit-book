@@ -20,7 +20,7 @@ Feel free to check out the project here: [BitBook](https://dejan.github.io/bitbo
 - CSS3
 - JS(ES6) 
 ### Framework: 
-- React, 
+- React 
 - Semantic UI React
 ### Module Loader: 
 - Create React App
