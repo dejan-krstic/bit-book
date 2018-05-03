@@ -1,7 +1,7 @@
 # BitBook
 
 BitBook is a social network Single Page App that allows users to create an account/login, post text, video or image posts, make comments, update profile. Posts can be filtered by type or deleted, app utilizes endless scroll, pagination, deleting posts, profile search... 
-It was a team effort, done in the final days of BIT bootcamp, we used Agile Scrum methodology and Git Version Control.  
+It was a team effort, done in the final days of BIT boot camp, we used Agile Scrum methodology and Git Version Control.  
 
 Feel free to check out the project here: [BitBook](https://dejan.github.io/bitbook/) (login with 'user' and 'pass' or simply register)
 
