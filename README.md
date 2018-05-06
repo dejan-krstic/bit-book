@@ -11,7 +11,7 @@ Feel free to check out the project here: [BitBook](https://dejan.github.io/bitbo
 - Separation of concerns
 - Passing data through multiple layers, both ways
 - Stateful and Stateless components
-- Routing and navigation
+- Routing and Navigation
 - Authentication
 - Validation
 ## Stack
